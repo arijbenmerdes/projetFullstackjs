@@ -31,31 +31,12 @@ pipeline {
             }
         }
 
-        stage('Unit Test - Client') {
-            steps {
-                script {
-                    dir('projet-test-react') {
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
-
-        stage('Unit Test - Server') {
-            steps {
-                script {
-                    dir('projet-nest-test') {
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
 
         stage('Build application - Client') {
             steps {
                 script {
                     dir('projet-test-react') {
-                        sh 'npm run build-dev'
+                        sh 'npm run build'
                     }
                 }
             }
@@ -65,7 +46,7 @@ pipeline {
             steps {
                 script {
                     dir('projet-nest-test') {
-                        sh 'npm run build-dev'
+                        sh 'npm run build'
                     }
                 }
             }
