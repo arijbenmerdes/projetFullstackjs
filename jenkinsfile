@@ -12,9 +12,6 @@ pipeline {
         }
 
         stage('Install dependencies - Client') {
-            when {
-                expression { env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'Arij' || env.BRANCH_NAME == 'Wafa' }
-            }
             steps {
                 script {
                     dir('projet-test-react') {
@@ -25,9 +22,6 @@ pipeline {
         }
 
         stage('Install dependencies - Server') {
-            when {
-                expression { env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'Arij' || env.BRANCH_NAME == 'Wafa' }
-            }
             steps {
                 script {
                     dir('projet-nest-test') {
@@ -38,9 +32,6 @@ pipeline {
         }
 
         stage('Unit Test - Client') {
-            when {
-                expression { env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'Arij' || env.BRANCH_NAME == 'Wafa' }
-            }
             steps {
                 script {
                     dir('projet-test-react') {
@@ -51,9 +42,6 @@ pipeline {
         }
 
         stage('Unit Test - Server') {
-            when {
-                expression { env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'Arij' || env.BRANCH_NAME == 'Wafa' }
-            }
             steps {
                 script {
                     dir('projet-nest-test') {
@@ -64,9 +52,6 @@ pipeline {
         }
 
         stage('Build application - Client') {
-            when {
-                expression { env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'Arij' || env.BRANCH_NAME == 'Wafa' }
-            }
             steps {
                 script {
                     dir('projet-test-react') {
@@ -77,9 +62,6 @@ pipeline {
         }
 
         stage('Build application - Server') {
-            when {
-                expression { env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'Arij' || env.BRANCH_NAME == 'Wafa' }
-            }
             steps {
                 script {
                     dir('projet-nest-test') {
@@ -90,5 +72,5 @@ pipeline {
         }
     }
 
-    
+  
 }
