@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+ triggers {
+        githubPush() // Pour GitHub
+    }
     stages {
         stage('Clone Repository') {
             steps {
