@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        SONAR_TOKEN = 'squ_c50d0cca6f6767e85c8a5622a1436b7de2c25854'  // Remplacez par votre jeton d'authentification
+    }
     triggers {
             githubPush() // Pour GitHub
         }
@@ -60,7 +63,7 @@ pipeline {
                     def scannerHome = tool 'scanner'  // Nom de l'outil SonarQube configuré dans Jenkins
                     withSonarQubeEnv('SonarQube') {  // Nom du serveur SonarQube configuré dans Jenkins
                         // Exécution du sonar-scanner avec le fichier sonar-project.properties pour le client
-                        sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=projet-test-react/sonar-project.properties"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=${env.SONAR_TOKEN} -Dproject.settings=projet-test-react/sonar-project.properties"
                     }
                 }
             }
@@ -73,7 +76,7 @@ pipeline {
                     def scannerHome = tool 'scanner'  // Nom de l'outil SonarQube configuré dans Jenkins
                     withSonarQubeEnv('SonarQube') {  // Nom du serveur SonarQube configuré dans Jenkins
                         // Exécution du sonar-scanner avec le fichier sonar-project.properties pour le serveur
-                        sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=projet-nest-test/sonar-project.properties"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=${env.SONAR_TOKEN} -Dproject.settings=projet-nest-test/sonar-project.properties"
                     }
                 }
             }
