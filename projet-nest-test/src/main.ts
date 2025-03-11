@@ -11,7 +11,7 @@ async function bootstrap() {
     //   credentials: true,
     // });
     app.use(cors({
-      origin: 'http://localhost:4000', // Remplacez par l'URL de votre frontend
+      origin: 'http://localhost:5173', // Remplacez par l'URL de votre frontend
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       allowedHeaders: ['Content-Type', 'Authorization'],
   }));

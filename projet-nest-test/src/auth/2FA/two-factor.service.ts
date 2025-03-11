@@ -24,4 +24,6 @@ export class TwoFactorService {
         const qrCodeImage = await qrcode.toDataURL(otpauthUrl);
         return { qrCodeImage, secret: secret.base32 };
       }
+
+      
 }

@@ -53,6 +53,28 @@ pipeline {
                 }
             }
         }
+        // Stage SonarQube pour le projet Server (Nest.js)
+        stage('SonarQube Analysis - Server') {
+            steps {
+                script {
+                    withSonarQubeEnv('SonarQube') {
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=projectNestjs -Dsonar.projectName="projectNestjs" -Dsonar.login=sqp_94cfaf9df0464e7f6e873e243746cfa87b34f6ee'
+                    }
+                }
+            }
+        }
+
+                 // Stage SonarQube pour le projet Client (React)
+
+        stage('SonarQube Analysis - Client') {
+            steps {
+                script {
+                    withSonarQubeEnv('SonarQube') {
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=projectReact -Dsonar.projectName="projectReact" -Dsonar.login=sqp_7828b3a4596a3eea9a7fab07c63959f173adbd83'
+                    }
+                }
+            }
+        }
     }
 
   
