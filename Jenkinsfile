@@ -66,7 +66,7 @@ pipeline {
                 }
             }
         }
-
+    }
         // Stage SonarQube pour le projet Server (NestJS)
         stage('SonarQube Analysis - Server') {
             steps {
