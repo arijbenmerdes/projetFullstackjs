@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    environment {
-        SONAR_TOKEN = 'squ_c50d0cca6f6767e85c8a5622a1436b7de2c25854'  // Remplacez par votre jeton d'authentification
-    }
+   
     triggers {
             githubPush() // Pour GitHub
         }
