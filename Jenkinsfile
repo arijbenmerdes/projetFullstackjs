@@ -53,27 +53,27 @@ pipeline {
                 }
             }
         }
-       // Stage SonarQube pour le projet Server (Nest.js)
-        stage('SonarQube Analysis - Server') {
+       // Stage SonarQube pour le projet Client (React)
+        stage('SonarQube Analysis - Client') {
             steps {
                 script {
-                    withSonarQubeEnv('SonarQube') {
-                        dir('projet-nest-test') {
-                            sh 'sonar-scanner'
-                        }
+                    def scannerHome = tool 'scanner'  // Nom de l'outil SonarQube configuré dans Jenkins
+                    withSonarQubeEnv('SonarQube') {  // Nom du serveur SonarQube configuré dans Jenkins
+                        // Exécution du sonar-scanner avec le fichier sonar-project.properties pour le client
+                        sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=projet-test-react/sonar-project.properties"
                     }
                 }
             }
         }
 
-        // Stage SonarQube pour le projet Client (React)
-        stage('SonarQube Analysis - Client') {
+        // Stage SonarQube pour le projet Server (NestJS)
+        stage('SonarQube Analysis - Server') {
             steps {
                 script {
-                    withSonarQubeEnv('SonarQube') {
-                        dir('projet-test-react') {
-                            sh 'sonar-scanner'
-                        }
+                    def scannerHome = tool 'scanner'  // Nom de l'outil SonarQube configuré dans Jenkins
+                    withSonarQubeEnv('SonarQube') {  // Nom du serveur SonarQube configuré dans Jenkins
+                        // Exécution du sonar-scanner avec le fichier sonar-project.properties pour le serveur
+                        sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=projet-nest-test/sonar-project.properties"
                     }
                 }
             }
